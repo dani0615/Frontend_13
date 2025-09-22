@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legkomolyabb feladatok</title>
+</head>
+<body>
+    <p id="demo" ></p>
+    <script>
+class Auto{
+    constructor(marka,evjarat,modell,uzemanyag)
+    {
+        this.marka = marka;
+        this.evjarat = evjarat;
+        this.modell = modell;
+        this.uzemanyag = uzemanyag;
+    }
+}
+const auto1 = new Auto("Toyota", 2017, "Corolla", "benzin");
+const auto2 = new Auto("Honda", 2018, "Civic", "dízel");
+
+
+//régi felírás
+function Auto2(marka,evjarat,modell,súly)
+{
+    this.marka = marka;
+    this.evjarat = evjarat;
+    this.modell = modell;
+    this.súly = súly;
+}
+const auto3 = new Auto2("Ford", 2019, "Focus", 1500);
+const auto4 = new Auto2("Chevrolet", 2020, "Malibu", 1600);
+
+
+
+
+
+
+
+        /*
+            //1.feladat
+            const szamok = [1,2,3,4,5];
+            const[a,b,c] = szamok;
+            console.log(a);
+            console.log(b);
+            console.log(c);
+
+            //2.feladat
+            const car = {brand:"Toyota" , year:2017,type:"Corolla" , color:"red"};
+            const {brand, type,color} = car;
+            console.log(brand);
+            console.log(type);
+            console.log(color);
+
+            //3.feladat
+            const user ={name:"Péter"};
+            user.age = 21;
+            console.log(user);
+            //4.feladat
+            const tömb =[5,7,9,2,4,6];
+            const [{szam:elso},{szam:masodik},...tovabbi] = tömb;
+            console.log(elso);
+            console.log(masodik);
+            console.table(tovabbi);
+
+
+        function Person(nev,kor,magassag)
+        {
+            this.nev = nev;
+            this.kor = kor;
+            this.magassag = magassag;
+        }
+        const x = new Person("József", 35, 180);
+        const y = new Person("Ádám", 28, 175);
+
+        */
+
+
+
+        /*
+        const users = [
+            {name : "Anna", age :25},
+            {name : "Béla", age :30},
+            {name : "Cecil", age :35}
+        ];
+        const names = users.map(user => user.name);
+        console.log(names);
+        console.table(names);
+
+        const fruits = ["alma", "banán", "cseresznye" , "dinnye"];
+        const fruitObj = Object.fromEntries(fruits.map(fruit=>[fruit, fruit.length]));
+        console.log(fruitObj);
+
+        const automarkak = ["Audi","BMW","Toyota", "Honda", "Ford", "Chevrolet", "Nissan"];
+        const nagybetus = automarkak.map(marka => marka.toUpperCase());
+        const kisbetus = automarkak.map(marka => marka.toLowerCase());
+        console.log(kisbetus);
+        console.log(nagybetus);
+
+        const  matrix = [ [1,2] , [3,4] , [5,6] ];
+        const duplamatrix =matrix.map(sor => sor.map(n=> n*2));
+        console.log(duplamatrix);
+
+        const users = { name: "Péter" , age: 28, car:"BMW"};
+        const {name: userName, car} = users;
+        console.log(userName);
+        console.log(car);
+
+        const students = {
+            name:"Kálmán",
+            address : {
+                city: "Miskolc",
+                zip: "3529"
+            }
+        };
+        const {name,address:{city,zip}} = students;
+        console.log(name);
+        console.log(city);
+        console.log(zip);
+        */
+
+        /*
+        const kocsi = {név: "BMW", szin: "fekete", tipus: "sedan"};
+        const {szin, tipus} = kocsi;
+        console.log(szin);
+        console.log(tipus);
+        */
+/*
+        //4 elemű obj , név , szín, típus,Rest-operátor , első 2 elemből a színt és rest-oppal a többit
+        const kocsikuj = [
+            {név: "Audi", szin: "feher", tipus: "coupe"},
+            {név: "Toyota", szin: "kek", tipus: "sedan"},
+            {név: "Ford", szin: "piros", tipus: "SUV"},
+            {név:"Nissan", szin: "szurke", tipus: "hatchback"}
+        ];
+        const [{nev:elso},{nev:masodik},...tovabbi] = kocsikuj;
+        console.log(elso);
+        console.log(masodik);
+        console.table(tovabbi);
+
+        */
+
+        /*
+        function getLenght(str) {
+            return str.length;
+        }
+        let text = "Hello";
+        console.log(getLenght(text));
+
+        const f = str => str.length;
+        console.log(f(text));
+
+        const szamok = [1,2,3,4,5];
+        const szorzat = szamok.map(szam=> szam * 2);
+        console.log(szorzat);
+
+        const oszthat = szamok.map(szam => szam %2);
+        console.table(oszthat);
+        
+
+        const osszead = (a,b) => a + b;
+        let x = osszead(4,5);
+        console.log(x);
+
+        const y = a => a * 2;
+        let b = y(4);
+        console.log(b);
+        */
+    </script>
+    
+</body>
+</html>

@@ -6,6 +6,46 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+       class User {
+    constructor(first, last, age) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+    }
+}
+
+class Car {
+    constructor(marka, model, evjarat, szine, ara) {
+        this.marka = marka;
+        this.model = model;
+        this.evjarat = evjarat;
+        this.szine = szine;
+        this.ara = ara;
+    }
+}
+
+const users = [
+    new User("Jani", "Szabó", 30),
+    new User("Dzsézön", "Kovács", 25),
+];
+console.log(users);
+
+        
+        console.log(users);
+
+        
+        const car1 = new Car("Toyota", "Corolla", 2020, "piros", 20000);
+        const car2 = new Car("Honda", "Civic", 2019, "kek", 22000);
+        const car3 = new Car("Ford", "Focus", 2018, "fekete", 18000);
+        const car4 = new Car("Chevrolet", "Malibu", 2021, "feher", 25000);
+        const car5 = new Car("Nissan", "Sentra", 2022, "szurke", 23000);
+
+        const ember = {};
+        ember.nev = "Jonas";
+        ember.age = 42;
+        ember.varos = "Sajokaza";
+
+        </script>
 </body>
 </html>
