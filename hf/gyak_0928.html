@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hf</title>
+</head>
+<body>
+    <script>
+        // Feladat 1 – Rest operator + destructuring tömbbel
+        const tömb = [5, 7, 9, 2, 4, 6];
+        const [elso, masodik, ...tovabbi] = tömb;
+        console.log(elso); 
+        console.log(masodik);
+        console.table(tovabbi.map(x => x * 2)); 
+
+        // Feladat 2 – Objektum destructuring + rest
+
+    const user = {
+        name: "Anna",
+        age: 25,
+        nationality: "Hungarian",
+        occupation: "developer"
+    };
+
+const { name, age, ...rest } = user;
+console.log(name); 
+console.log(age); 
+console.log(Object.values(rest).map(value => value)); 
+       
+        
+
+
+    //Feladat 3.
+        function Car(brand, model, year) {
+            this.brand = brand;
+            this.model = model;
+            this.year = year;
+        }
+        const auto = new Car("Toyota", "Corolla", 2017);
+        const auto2 = new Car("Honda", "Civic", 2018);
+        const cars = [auto, auto2];
+        console.log(cars.map(x => x.brand)); 
+
+        // Feladat 4 – Class constructor
+        class Student {
+            constructor(first, last, age) {
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+            }
+        }
+        const students = [
+            new Student("Jani", "Szabó", 30),
+            new Student("Dzsézön", "Kovács", 25),
+            new Student("Peti", "Nagy", 28),
+        ];
+        const [elsodiak, ...tovabbiak] = students;
+        console.log(tovabbiak.map(x => x.age)); 
+
+        // Feladat 5 – Rest parameters function + class
+        class Book {
+            constructor(title, author, year) {
+                this.title = title;
+                this.author = author;
+                this.year = year;
+            }
+        }
+        function konyvCimek(...books) {
+            console.log(books.map(book => book.title));
+        }
+        const book1 = new Book("1984", "George Orwell", 1949);
+        const book2 = new Book("The Hobbit", "J.R.R. Tolkien", 1937);
+        const book3 = new Book("Dune", "Frank Herbert", 1965);
+        konyvCimek(book1, book2, book3);
+    </script>
+</body>
+</html>
