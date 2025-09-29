@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+    //1., Írj egy függvényt, amely tetszőleges számú számot kap rest
+    paraméterként, és visszaadja a legnagyobb értéket. Teszteld 5 különböző
+    számmal.
+    */
+    function maxSzam(...szamok) {
+        return Math.max(...szamok);
+    }
+    console.log(maxSzam(1981, 21340, 397124, 4012, 69));
+
+    
+    /*
+    2., Hozz létre egy tömböt, amely diák objektumokat tartalmaz (név,
+    kor). Destructuring segítségével vedd ki az első diákot, a többieket kezeld
+    rest operatorral. Írd ki a többiek nevét.
+    */
+    const diak = [
+        {nev:"Sandor", kor:22},
+        {nev:"Laci",kor:88},
+        {nev:"Amanda",kor:19}
+    ]
+    const [elsodiak, ...tovabbiak] = diak;
+    console.log(elsodiak);
+    console.log(tovabbiak.map(x => x.nev)); 
+
+    
+    
+    /*
+    3., Készíts egy objektumot (pl. {firstName: "Anna",
+    lastName: "Kovács"}). Destructuring során nevezd át a változókat (pl.
+    first → kereszt, last → vezetek). Írd ki a kapott változókat.
+    */
+
+    const Szemely = {
+         
+        firstName:"Anna",
+        lastName:"Kovács"
+    }
+    const{firstName:kereszt,lastName:vezetek} = Szemely;
+    console.log(kereszt,vezetek);
+
+    /*
+    4., Készíts egy Employee osztályt name, position, salary property-kkel.
+    
+    Hozz létre három alkalmazottat, majd destructuring segítségével vedd ki az első
+    alkalmazott nevét, a többieket rest operatorral gyűjtsd össze. Írd ki a többiek
+    pozícióját.
+    */
+   class Employee
+   {
+    constructor (name,position,salary)
+    {
+        this.name=name;
+        this.position=position;
+        this.salary=salary;
+    }
+}
+    const Employees=[
+            new Employee("Golden Laci","Kapitányságvezető",71000),
+            new Employee("Felmosó Andor","Takarító",22000),
+            new Employee("Törlő Kendő","Takarítási asszisztens" , 19000),
+        
+    ];
+    const[{name:goldenlaszlo},...tobbiek]=Employees;
+    console.log(tobbiek.map(x=>x.position));
+  
+    /*
+    5., Készíts egy Animal osztályt species, name, age property-kkel.
+    Példányosíts három állatot, majd destructuring segítségével bontsd ki az első
+    állat faját, a maradékot kezeld rest operatorral. Írd ki a többi állat nevét.
+    */
+
+    class Animal{
+        constructor(species,name,age){
+            this.species=species;
+            this.name=name;
+            this.age=age;
+        }
+    }
+    const allatok=[
+        new Animal("Kutja","Jackie",5),
+        new Animal("Macsek","Cirmi",3),
+        new Animal("Hörcsög","Beka",2),
+    ];
+    const[{species:elsoallat},...tobbiallat]=allatok;
+    console.log(tobbiallat.map(x=>x.name));
+
+    
+    /*
+    6., Adj meg egy üres objektumot, majd töltsd
+    fel legalább 3 tulajdonsággal!
+    */
+   const Obdzsekt={};
+   Obdzsekt.szin = "Halványan sárga";
+   Obdzsekt.ko="Márvány";
+   Obdzsekt.negykerekugepjarmu="Audi";
+    
+    /*
+    7., Hozz létre egy üres objektumot car néven, majd töltsd fel legalább 3
+    tulajdonsággal (pl. brand, model, year). Végül írd ki az objektumot a konzolra.
+    */
+    const car={};
+    car.brand="Lexus";
+    car.model="LS200";
+    car.year=2013;
+    console.table(car)
+    
+    /*
+    8., Készíts egy üres objektumot user néven,
+    majd add hozzá a következő tulajdonságokat: name, email, age. Ezután változtasd
+    meg az age értékét, majd írd ki az objektumot.
+    */
+   const user ={};
+   user.name="Barna";
+   user.email="Barna.2000@nb.hu";
+   user.age=25;
+   user.age=30;
+   console.table(user);
+
+    /*
+    9., Hozz létre egy üres objektumot book néven,
+    majd adj hozzá 3 tulajdonságot (pl. title, author, year). Ezután egészítsd ki
+    egy új tulajdonsággal pages, majd írd
+    ki az objektum minden kulcsát és értékét.
+    */
+
+    const book={};
+    book.title="1999";
+    book.author="Dzsordzsó Ármáni";
+    book.year=26;
+    book.oldalak=230;
+    console.table(book);
+    console.log(book);
+    
+
+    /*
+    10., Készíts
+    egy 15 elemű tömböt egész számokkal. Válogasd ki belőle azokat a számokat,
+    amelyek nagyobbak 50-nél, majd írasd ki őket.*/
+    const tizenotszam=[32,515,123,567,54678,586,134,6346,86756,432,21,674,765,45,854];
+    tizenotszam.forEach(element => {
+        if(element>50)
+        {
+            console.log(element);
+        }
+        
+    });
+
+    /*11., Hozz létre egy 20 elemű egész számokat tartalmazó tömböt.
+Szűrd ki azokat a számokat, amelyek oszthatók 3-mal, és írasd ki a konzolra.*/
+const huszszam=[32,515,123,567,54678,586,134,6346,86756,432,21,674,765,45,854,12467,31234,6754,234,645];
+huszszam.forEach(szam=>{
+    if(szam % 3 ===0)
+    {
+        console.table("Osztható 3-mal:"+szam);
+    }
+});
+
+    </script>
+
+    
+</body>
+</html>
