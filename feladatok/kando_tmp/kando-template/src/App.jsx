@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import schoolLogo from './assets/kando.jpg'
 import './App.css'
 
-function App() {
+export const App = () => {
   const [count, setCount] = useState(0)
 
   return (
@@ -21,14 +21,14 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          a számláló állása: {count}
         </button>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          Módosítsd az <code>src/App.jsx</code>-t és mentsd le, hogy tesztelhesd a HMR-t!
         </p>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+         Kattints a React, a Kandó, vagy a Vite logókra, további információkért!
       </p>
     </>
   )
