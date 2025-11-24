@@ -1,0 +1,118 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+/* ------------------- KÖZÉPRE HELYEZÉS ------------------- */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;        /* ← már megvolt, ez a fontos rész */
+  justify-content: center;    /* ← ezt hozzáadtuk a vízszintes középre igazításhoz */
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #242424;  /* sötét háttér */
+}
+
+/* Világos mód háttere */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  body {
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* ------------------- SZÉP KÁRTYA A LISTÁNAK ------------------- */
+.row.m-5.p-5.border {
+  max-width: 800px;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  border: none !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 3rem !important;
+  margin: 0 auto !important;   /* biztos középre */
+}
+
+/* Lista szebbé tétele */
+.row ol {
+  font-size: 1.1rem;
+  padding-left: 1.5rem;
+}
+
+.row li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s;
+}
+
+.row li:last-child {
+  border-bottom: none;
+}
+
+.row li:hover {
+  background: rgba(100, 108, 255, 0.15);
+  border-radius: 8px;
+  padding-left: 0.5rem;
+  transform: translateX(8px);
+}
+
+/* Gombok (ha később lesznek) */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
