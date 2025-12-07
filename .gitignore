@@ -38,3 +38,6 @@ lerna-debug.log*
 # OS files
 Thumbs.db
 .DS_Store
+
+# Nested git repositories (should not be tracked)
+**/.git/
