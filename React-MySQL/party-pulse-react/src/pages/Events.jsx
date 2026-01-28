@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import EventCard from '../components/EventCard';
-import { events } from '../data/events';
+import { useEvents } from '../hooks/useEvents';
 
 const Events = () => {
     const [searchParams] = useSearchParams();
@@ -11,9 +11,18 @@ const Events = () => {
     const [type, setType] = useState('');
     const [filteredEvents, setFilteredEvents] = useState([]);
 
+    // Use custom hook
+    const { events: allEvents, loading, error, fetchEvents } = useEvents();
+
+    // Események betöltése a backend-ről
+    useEffect(() => {
+        fetchEvents();
+    }, [fetchEvents]);
+
+    // Szűrés alkalmazása
     useEffect(() => {
         const applyFilters = () => {
-            const filtered = events.filter(event => {
+            const filtered = allEvents.filter(event => {
                 return (
                     (event.name.toLowerCase().includes(keyword.toLowerCase()) ||
                         event.desc.toLowerCase().includes(keyword.toLowerCase())) &&
@@ -26,7 +35,7 @@ const Events = () => {
         };
 
         applyFilters();
-    }, [keyword, city, date, type]);
+    }, [keyword, city, date, type, allEvents]);
 
     return (
         <section id="events" className="page active">
@@ -66,7 +75,15 @@ const Events = () => {
                 </div>
 
                 <div className="event-grid" id="all-events-list">
-                    {filteredEvents.length > 0 ? (
+                    {loading ? (
+                        <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>
+                            <i className="fas fa-spinner fa-spin"></i> Események betöltése...
+                        </p>
+                    ) : error ? (
+                        <p style={{ gridColumn: '1/-1', textAlign: 'center', color: '#ff4444' }}>
+                            {error}
+                        </p>
+                    ) : filteredEvents.length > 0 ? (
                         filteredEvents.map(event => (
                             <EventCard key={event.id} event={event} />
                         ))
