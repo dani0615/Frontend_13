@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Events from './pages/Events';
 import Ranking from './pages/Ranking';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 import './App.css'; // Global CSS a App.css-ből
 import './index.css'; // További globális CSS az index.css-ből
 
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/events" element={<Events />} />
                     <Route path="/ranking" element={<Ranking />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/profile" element={<Profile />} />
                     {/* További route-ok, ha szükséges */}
                 </Routes>
                 <Footer />

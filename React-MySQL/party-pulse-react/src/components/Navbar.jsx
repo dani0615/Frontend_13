@@ -26,8 +26,10 @@ const Navbar = () => {
                 <li><NavLink to="/ranking" onClick={() => setIsMobileMenuOpen(false)}>Ranglista</NavLink></li>
                 {isAuthenticated ? (
                     <>
-                        <li style={{ color: '#bc13fe', fontWeight: 'bold' }}>
-                            <i className="fas fa-user"></i> {user?.username}
+                        <li>
+                            <NavLink to="/profile" style={{ color: '#bc13fe', fontWeight: 'bold' }} onClick={() => setIsMobileMenuOpen(false)}>
+                                <i className="fas fa-user"></i> {user?.username}
+                            </NavLink>
                         </li>
                         <li>
                             <a onClick={handleLogout} className="btn-neon-outline" style={{ cursor: 'pointer' }}>

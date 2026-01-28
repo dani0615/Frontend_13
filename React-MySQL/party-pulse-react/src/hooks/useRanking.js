@@ -9,6 +9,30 @@ export const useRanking = () => {
     const fetchRanking = useCallback(async (type = 'all_time', count = 20) => {
         setLoading(true);
         setError(null);
+
+        // Mock Logic
+        if (import.meta.env.VITE_USE_MOCK_API === 'true') {
+            await new Promise(resolve => setTimeout(resolve, 800));
+            const mockData = [
+                { rank: 1, userName: 'Tóth Gábor', partyCount: 42, score: 8400 },
+                { rank: 2, userName: 'Kovács Anna', partyCount: 38, score: 7600 },
+                { rank: 3, userName: 'Szabó Péter', partyCount: 35, score: 7000 },
+                { rank: 4, userName: 'Nagy Zoltán', partyCount: 29, score: 5800 },
+                { rank: 5, userName: 'Kiss Dóra', partyCount: 25, score: 5000 }
+            ];
+
+            const formattedRanking = mockData.map(user => ({
+                rank: user.rank,
+                username: user.userName,
+                events: user.partyCount,
+                points: user.score
+            }));
+
+            setRanking(formattedRanking);
+            setLoading(false);
+            return;
+        }
+
         try {
             const response = await apiClient.get(`/api/Ranking/TopList`, {
                 params: { type, count }

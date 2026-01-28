@@ -9,12 +9,41 @@ export const useEvents = () => {
     const fetchEvents = useCallback(async () => {
         setLoading(true);
         setError(null);
+
+        // Mock Logic
+        if (import.meta.env.VITE_USE_MOCK_API === 'true') {
+            await new Promise(resolve => setTimeout(resolve, 800));
+            const mockData = [
+                { id: 1, title: 'Techno Night Miskolc', description: 'Hatalmas techno buli a belvárosban.', eventDateTime: '2026-05-10T22:00:00', locationName: 'Helynekem', address: 'Miskolc, Széchenyi u. 1' },
+                { id: 2, title: 'Retro Party Mezőkövesd', description: 'A 90-es évek legnagyobb slágerei.', eventDateTime: '2026-06-12T21:00:00', locationName: 'Bozsik Aréna', address: 'Mezőkövesd, Olaj út 2' },
+                { id: 3, title: 'Summer Festival Sárospatak', description: 'Szabadtéri fesztivál a vár tövében.', eventDateTime: '2026-07-20T18:00:00', locationName: 'Várkert', address: 'Sárospatak, Vár út 1' },
+                { id: 4, title: 'Deep House Session', description: 'Lazulós ütemek a folyóparton.', eventDateTime: '2026-08-05T19:00:00', locationName: 'River Bar', address: 'Kazincbarcika, Fő tér 5' }
+            ];
+
+            const formattedEvents = mockData.map((event, index) => ({
+                id: event.id,
+                eventId: event.id,
+                name: event.title,
+                desc: event.description,
+                date: formatDate(event.eventDateTime),
+                place: event.locationName,
+                city: extractCityFromAddress(event.address),
+                address: event.address,
+                img: getPlaceholderImage(index),
+                type: index % 2 === 0 ? 'Club Night' : 'Koncert'
+            }));
+
+            setEvents(formattedEvents);
+            setLoading(false);
+            return;
+        }
+
         try {
             const response = await apiClient.get('/Event/AllEvents');
 
             const formattedEvents = response.data.map((event, index) => ({
-                id: index + 1, // Vagy event.id ha van
-                eventId: event.id, // Eredeti ID megőrzése
+                id: index + 1,
+                eventId: event.id,
                 name: event.title,
                 desc: event.description,
                 date: formatDate(event.eventDateTime),
