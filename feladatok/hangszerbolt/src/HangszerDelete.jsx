@@ -23,7 +23,7 @@ export const HangszerDelete = () => {
     const handleDelete = () => {
         axios.delete(`http://localhost:3001/instruments/${id}`)
             .then(response => {
-                alert('Sikeres törlés!');
+                alert('Sikeres törlés! Törölt hangszer: ' + response.data.name);
                 navigate('/');
             })
             .catch(error => {

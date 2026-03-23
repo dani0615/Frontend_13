@@ -18,7 +18,7 @@ export const HangszerCreate = () => {
 
         axios.post('http://localhost:3001/instruments', UjHangszer)
             .then(response => {
-                alert('Sikeres felvétel!');
+                alert('Sikeres felvétel! ID: ' + response.data.id);
                 navigate('/');
             })
             .catch(error => {

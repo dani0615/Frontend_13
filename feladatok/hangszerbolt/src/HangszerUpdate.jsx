@@ -38,7 +38,7 @@ export const HangszerUpdate = () => {
         event.preventDefault();
         axios.put(`http://localhost:3001/instruments/${id}`, hangszer)
             .then(response => {
-                alert('Sikeres módosítás!');
+                alert('Sikeres módosítás! Name: ' + response.data.name);
                 navigate('/');
             })
             .catch(error => {
