@@ -5,7 +5,7 @@ import axios from 'axios';
 export const HangszerUpdate = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [instrument, setInstrument] = useState({
+    const [hangszer, setHangszer] = useState({
         name: '',
         brand: '',
         price: 0,
@@ -17,7 +17,7 @@ export const HangszerUpdate = () => {
     useEffect(() => {
         axios.get(`http://localhost:3001/instruments/${id}`)
             .then(response => {
-                setInstrument(response.data);
+                setHangszer(response.data);
                 setLoading(false);
             })
             .catch(error => {
@@ -28,7 +28,7 @@ export const HangszerUpdate = () => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setInstrument(prev => ({
+        setHangszer(prev => ({
             ...prev,
             [name]: name === 'price' || name === 'quantity' ? Number(value) : value
         }));
@@ -36,7 +36,7 @@ export const HangszerUpdate = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.put(`http://localhost:3001/instruments/${id}`, instrument)
+        axios.put(`http://localhost:3001/instruments/${id}`, hangszer)
             .then(response => {
                 alert('Sikeres módosítás!');
                 navigate('/');
@@ -58,25 +58,25 @@ export const HangszerUpdate = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label className="form-label fw-bold">Hangszer neve</label>
-                        <input type="text" name="name" className="form-control" value={instrument.name} onChange={handleInputChange} required />
+                        <input type="text" name="name" className="form-control" value={hangszer.name} onChange={handleInputChange} required />
                     </div>
                     <div className="mb-3">
                         <label className="form-label fw-bold">Márka</label>
-                        <input type="text" name="brand" className="form-control" value={instrument.brand} onChange={handleInputChange} required />
+                        <input type="text" name="brand" className="form-control" value={hangszer.brand} onChange={handleInputChange} required />
                     </div>
                     <div className="row">
                         <div className="col-md-6 mb-3">
                             <label className="form-label fw-bold">Ár (Ft)</label>
-                            <input type="number" name="price" className="form-control" value={instrument.price} onChange={handleInputChange} required />
+                            <input type="number" name="price" className="form-control" value={hangszer.price} onChange={handleInputChange} required />
                         </div>
                         <div className="col-md-6 mb-3">
                             <label className="form-label fw-bold">Készlet (db)</label>
-                            <input type="number" name="quantity" className="form-control" value={instrument.quantity} onChange={handleInputChange} required />
+                            <input type="number" name="quantity" className="form-control" value={hangszer.quantity} onChange={handleInputChange} required />
                         </div>
                     </div>
                     <div className="mb-4">
                         <label className="form-label fw-bold">Kép URL</label>
-                        <input type="url" name="imageURL" className="form-control" value={instrument.imageURL} onChange={handleInputChange} />
+                        <input type="url" name="imageURL" className="form-control" value={hangszer.imageURL} onChange={handleInputChange} />
                     </div>
                     <div className="d-grid gap-2">
                         <button type="submit" className="btn btn-warning btn-lg">

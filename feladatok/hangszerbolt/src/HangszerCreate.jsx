@@ -8,7 +8,7 @@ export const HangszerCreate = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
-        const newInstrument = {
+        const UjHangszer = {
             name: formData.get('name'),
             brand: formData.get('brand'),
             price: Number(formData.get('price')),
@@ -16,7 +16,7 @@ export const HangszerCreate = () => {
             imageURL: formData.get('imageURL')
         };
 
-        axios.post('http://localhost:3001/instruments', newInstrument)
+        axios.post('http://localhost:3001/instruments', UjHangszer)
             .then(response => {
                 alert('Sikeres felvétel!');
                 navigate('/');

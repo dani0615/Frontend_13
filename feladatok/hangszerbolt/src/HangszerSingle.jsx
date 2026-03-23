@@ -4,13 +4,13 @@ import axios from 'axios';
 
 export const HangszerSingle = () => {
     const { id } = useParams();
-    const [instrument, setInstrument] = useState(null);
+    const [hangszer, setHangszer] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get(`http://localhost:3001/instruments/${id}`)
             .then(response => {
-                setInstrument(response.data);
+                setHangszer(response.data);
                 setLoading(false);
             })
             .catch(error => {
@@ -29,7 +29,7 @@ export const HangszerSingle = () => {
         );
     }
 
-    if (!instrument) {
+    if (!hangszer) {
         return <div className="alert alert-danger">A hangszer nem található!</div>;
     }
 
@@ -37,10 +37,10 @@ export const HangszerSingle = () => {
         <div className="card shadow border-0 overflow-hidden mx-auto mt-4" style={{ maxWidth: '900px' }}>
             <div className="row g-0">
                 <div className="col-md-6 bg-light d-flex align-items-center justify-content-center p-4">
-                    <img 
-                        src={instrument.imageURL || "https://placehold.co/600x400?text=Nincs+kép"} 
-                        className="img-fluid rounded" 
-                        alt={instrument.name} 
+                    <img
+                        src={hangszer.imageURL || "https://placehold.co/600x400?text=Nincs+kép"}
+                        className="img-fluid rounded"
+                        alt={hangszer.name}
                         style={{ maxHeight: '400px', objectFit: 'contain' }}
                     />
                 </div>
@@ -49,30 +49,30 @@ export const HangszerSingle = () => {
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb small">
                                 <li className="breadcrumb-item"><NavLink to="/">Kezdőlap</NavLink></li>
-                                <li className="breadcrumb-item active">{instrument.brand}</li>
+                                <li className="breadcrumb-item active">{hangszer.brand}</li>
                             </ol>
                         </nav>
-                        <h2 className="card-title fw-bold mb-3">{instrument.name}</h2>
+                        <h2 className="card-title fw-bold mb-3">{hangszer.name}</h2>
                         <div className="mb-4">
-                            <span className="badge bg-secondary me-2">{instrument.brand}</span>
-                            <span className={`badge ${instrument.quantity > 0 ? 'bg-success' : 'bg-danger'}`}>
-                                {instrument.quantity > 0 ? 'Készleten' : 'Elfogyott'}
+                            <span className="badge bg-secondary me-2">{hangszer.brand}</span>
+                            <span className={`badge ${hangszer.quantity > 0 ? 'bg-success' : 'bg-danger'}`}>
+                                {hangszer.quantity > 0 ? 'Készleten' : 'Elfogyott'}
                             </span>
                         </div>
-                        <h3 className="text-primary fw-bold mb-4">{instrument.price.toLocaleString()} Ft</h3>
-                        
+                        <h3 className="text-primary fw-bold mb-4">{hangszer.price.toLocaleString()} Ft</h3>
+
                         <div className="mt-auto pt-4 border-top">
                             <ul className="list-unstyled mb-4">
                                 <li><i className="bi bi-check2-circle text-success me-2"></i>Eredeti minőség</li>
                                 <li><i className="bi bi-truck text-muted me-2"></i>Gyors kiszállítás</li>
                                 <li><i className="bi bi-shield-check text-muted me-2"></i>2 év garancia</li>
                             </ul>
-                            
+
                             <div className="d-flex gap-2">
                                 <NavLink to="/" className="btn btn-outline-secondary px-4">
                                     <i className="bi bi-arrow-left me-1"></i> Vissza
                                 </NavLink>
-                                <NavLink to={`/modosit-hangszer/${instrument.id}`} className="btn btn-warning px-4 flex-grow-1">
+                                <NavLink to={`/modosit-hangszer/${hangszer.id}`} className="btn btn-warning px-4 flex-grow-1">
                                     <i className="bi bi-pencil-square me-1"></i> Módosítás
                                 </NavLink>
                             </div>

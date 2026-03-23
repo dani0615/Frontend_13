@@ -5,13 +5,13 @@ import axios from 'axios';
 export const HangszerDelete = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [instrument, setInstrument] = useState(null);
+    const [hangszer, setHangszer] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get(`http://localhost:3001/instruments/${id}`)
             .then(response => {
-                setInstrument(response.data);
+                setHangszer(response.data);
                 setLoading(false);
             })
             .catch(error => {
@@ -34,7 +34,7 @@ export const HangszerDelete = () => {
 
     if (loading) return <div className="text-center p-5"><div className="spinner-border"></div></div>;
 
-    if (!instrument) return <div className="alert alert-danger">Hangszer nem található!</div>;
+    if (!hangszer) return <div className="alert alert-danger">Hangszer nem található!</div>;
 
     return (
         <div className="card shadow border-0 mx-auto mt-5" style={{ maxWidth: '500px' }}>
@@ -44,7 +44,7 @@ export const HangszerDelete = () => {
                 </div>
                 <h3 className="fw-bold mb-3">Biztosan törölni szeretné?</h3>
                 <p className="text-muted mb-4">
-                    A(z) <strong>{instrument.name}</strong> véglegesen törölve lesz a rendszerből. Ez a művelet nem vonható vissza.
+                    A(z) <strong>{hangszer.name}</strong> véglegesen törölve lesz a rendszerből. Ez a művelet nem vonható vissza.
                 </p>
                 <div className="d-flex gap-2 justify-content-center">
                     <button onClick={handleDelete} className="btn btn-danger px-4 py-2">
