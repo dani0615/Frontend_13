@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import { ShipList } from './components/ShipList.jsx';
-import { ShipSingle } from './components/ShipSingle.jsx';
-import { DenmarkStrait } from './components/DenmarkStrait.jsx';
+import { ShipList } from './Pages/ShipList.jsx';
+import { ShipSingle } from './Pages/ShipSingle.jsx';
+import { DenmarkStrait } from './Pages/DenmarkStrait.jsx';
 import './App.css';
 
 export const App = () => {
